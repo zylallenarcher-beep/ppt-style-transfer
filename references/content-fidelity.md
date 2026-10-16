@@ -1,39 +1,39 @@
-# 内容映射与保真核对
+# Content Mapping and Fidelity Checks
 
-用于已有PPT的内容保留，特别是跨页重排和含表格/图表的报告。
+Use this reference when preserving content from an existing PPT, especially when reorganizing content across slides or working with reports that contain tables or charts.
 
-## 来源记录
+## Source records
 
-保存原文件哈希、页面顺序、尺寸和原页渲染。提取原生段落、表格单元格、数据标签、单位、限定语、脚注、来源等级及备注；同时检查图片内文字、母版继承内容、组合形状、嵌入图表及其工作簿。普通形状绘制的柱图仍有数据与类别关系。
+Save the original file hash, slide order, dimensions, and rendered source slides. Extract native paragraphs, table cells, data labels, units, qualifiers, footnotes, source authority levels, and notes. Also inspect text within images, content inherited from slide masters, grouped shapes, embedded charts, and their workbooks. A bar chart drawn with ordinary shapes still carries relationships between data and categories.
 
-为内容建立稳定定位，例如源文件/页/对象/段落，表格定位到行列，图表定位到系列/类别/数值。图片编号只是定位，不能替代业务含义核对。OCR只是辅助，无法辨认的文字应标为待核对，不猜数补齐。
+Assign each content item a stable locator, such as source file / slide / object / paragraph. Locate table content by row and column, and chart content by series / category / value. Image identifiers locate assets; they do not replace checks of their business meaning. Use OCR as an aid. Mark illegible text as pending verification instead of guessing numbers or filling gaps.
 
-映射可用JSON、CSV或表格，不要求特定项目目录结构。至少保留这些字段：
+Store the mapping in JSON, CSV, or a table; no particular project directory structure is required. Include at least these fields:
 
-| 字段 | 用途 |
+| Field | Purpose |
 |---|---|
-| source_id / locator | 定位来源页、对象、段落或单元格 |
-| original_text / value | 精确原文或数值与单位 |
-| output_page / target | 输出位置及内容去向 |
-| role | 业务原文、重复眉题/表头、导航、示意标注 |
-| change_reason / authorization | 获授权的改写、纠错或引用更新依据 |
+| source_id / locator | Locate the source slide, object, paragraph, or cell |
+| original_text / value | Preserve the exact source text or value with its unit |
+| output_page / target | Record the output location and content destination |
+| role | Identify business source text, repeated running headings or table headers, navigation, or illustrative annotations |
+| change_reason / authorization | Record the basis for an authorized rewrite, correction, or reference update |
 
-## 拆页与重组
+## Splitting and reorganizing slides
 
-按SKILL.md中的结构与页数模式检查授权。结构、页数完整一致时，每个源页对应同序新页，逐页核对信息归属及章节层级；已允许重排或已批准增页方案时，一个源页可映射到多个新页，一个内容组内部的条件与结论应保持关联。允许重复相关眉题、表头、单位或限定条件以避免拆页后歧义，映射中说明重复原因。不能把正文挪到备注后声称信息仍完整可读。
+Check authorization against the structure and slide-count mode in SKILL.md. When structure and slide count must match exactly, map each source slide to a new slide in the same sequence, and verify content placement and section hierarchy slide by slide. When reorganization is allowed or an expansion plan has been approved, one source slide may map to multiple new slides. Keep conditions and conclusions within a content group connected. Repeat relevant running headings, table headers, units, or qualifying conditions as needed to avoid ambiguity after a split, and record why they were repeated. Moving body content into speaker notes does not satisfy a requirement to keep it fully readable.
 
-原文“见P4”等引用需要随重排处理：若允许更新导航，记录旧引用与新目标；若要求所有原文严格不变，保留原引用并添加来源页码说明或对应表。新页码与原稿定位应明确区分。
+Handle cross-references such as "see P4" when reorganizing content. If navigation updates are allowed, record the old reference and its new target. If all original wording must remain strictly unchanged, retain the original reference and add a source-slide note or mapping table. Clearly distinguish new slide numbers from source-deck locators.
 
-发现算术、术语或表述不一致时，登记具体来源与差异。视觉改版不自动授权修改事实；用户明确授权业务修订时另记变更，核对基线相应版本。
+Record the specific source and discrepancy when arithmetic, terminology, or wording is inconsistent. A visual redesign does not by itself authorize factual changes. When the user explicitly authorizes business-content revisions, record those changes separately and check against the corresponding baseline version.
 
-## 最终文件核对
+## Final-file checks
 
-1. 覆盖：每个要求保留的来源内容都有输出去向，未检查的图片/OCR/嵌入内容单列。
-2. 文字：回读最终PPTX段落和表格文字，与每页映射的预期内容比较。可忽略排版换行和空白差异；不能忽略数字、正负号、不等号、小数点、单位或限定语。
-3. 次数：显式记录允许重复内容及新增导航；比较每页字符多重集可辅助发现漏字，但单独使用无法验证顺序与语义。
-4. 关系：核对每个数值所属的指标/表格行列/图表系列与类别、流程方向、图例、刻度和脚注。无缺字不代表对应关系正确。
-5. 视觉：原生文字完整但被遮挡或裁切仍为失败；通过最终渲染检查。
+1. Coverage: Every source item that must be preserved has an output destination. List uninspected image, OCR, or embedded content separately.
+2. Text: Read paragraphs and table text back from the final PPTX and compare them with the expected content mapped to each slide. Layout-induced line breaks and whitespace differences may be ignored. Numbers, plus and minus signs, inequality signs, decimal points, units, and qualifiers must match.
+3. Occurrences: Explicitly record permitted repetitions and new navigation. Comparing character multisets for each slide can help detect omissions, but cannot establish order or meaning on its own.
+4. Relationships: Verify the metric, table row and column, or chart series and category associated with every value. Check process direction, legends, scales, and footnotes. Complete text alone does not establish correct relationships.
+5. Visuals: Native text that is complete but obscured or cropped still fails. Check the final rendered slides.
 
-保留首页的要求若是“原样保留”，优先保留原生页并在相同软件与尺寸下比较渲染。跨渲染器存在差异时说明原因，不把像素一致当作跨平台通用门槛。
+When the first slide must be preserved "exactly as is," prefer keeping the native slide and comparing renders in the same application at the same dimensions. Explain differences across renderers; pixel identity is not a universal cross-platform acceptance criterion.
 
-保真核对证明内容遵从指定来源，不证明来源数据真实或投资结论正确。
+Fidelity checks establish that content follows the specified source. They do not establish that the source data is true or that its investment conclusions are correct.

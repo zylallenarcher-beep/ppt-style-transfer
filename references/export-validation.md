@@ -1,34 +1,34 @@
-# 导出与实际渲染
+# Export and Rendering Validation
 
-按所选路线读取对应小节，不要求无条件使用HTML、PowerPoint COM或合成背景。
+Read the sections relevant to the selected production route. HTML, PowerPoint COM, and composited backgrounds are not mandatory for every task.
 
-## 先匹配编辑能力
+## Match the required editing capabilities first
 
-- 原生路线：适合修改布局、增删表格行、更新绑定数据的图表。验证实际对象类型和编辑行为。
-- 混合路线：照片、复杂渐变、玻璃和装饰渲染为背景，正文与数字保留为原生文字。适合视觉稳定且主要修改文字的演示；背景内柱条和时间轴不随数字自动更新。
-- 整页图片路线：仅在用户接受此种交付时使用；不声称文字可编辑。
+- Native objects: Suitable for layout changes, adding or removing table rows, and updating charts linked to data. Verify the actual object types and editing behavior.
+- Hybrid: Render photographs, complex gradients, glass effects, and decoration into a background, while retaining body text and numbers as native text. Suitable for presentations that need stable visuals and mainly text edits. Bars and timelines within the background do not update automatically when numbers change.
+- Full-slide images: Use only when the user accepts this delivery format. Describe the text as non-editable.
 
-## HTML到PPTX
+## HTML to PPTX
 
-使用固定尺寸、明确页面边界。通过HTTP预览，多页组件可能生成缩略图或克隆，采集只选择真实页面；deck-stage可选择直接子页面，避免统计内部克隆。检查页数、页面唯一性、资源加载和字体就绪。
+Use fixed dimensions and explicit slide boundaries. Preview over HTTP. Multi-slide components may generate thumbnails or clones; capture only the actual slides. For deck-stage, selecting direct child slides can avoid counting internal clones. Check the slide count, slide uniqueness, asset loading, and font readiness.
 
-导出器不能稳定表达玻璃、滤镜或渐变时，可在符合编辑要求的前提下合成视觉层。截图视觉层时隐藏文字与待保留的原生品牌对象；叠回原生文字后检查无重复、丢失或背景覆盖。隐藏布局占位应保持几何，不让文字因背景元素消失而重新流动。
+If the exporter cannot reliably reproduce glass effects, filters, or gradients, you may composite the visual layer, provided this meets the editing requirements. Hide text and any native brand objects that must be retained before capturing the visual layer. After overlaying native text, check for duplication, omissions, and backgrounds covering content. Preserve the geometry of hidden layout placeholders so text does not reflow when background elements disappear.
 
-先验证代表页实际PPTX，再扩展全稿。查找当前环境可用的运行时与导出器，不硬编码另一项目的工具路径，也不因历史案例使用某工具就擅自安装新工具。
+Validate a representative slide in the actual PPTX before expanding to the full deck. Find the runtimes and exporters available in the current environment. Avoid hard-coded tool paths from another project, and do not install a new tool merely because a previous project used it.
 
 ## Windows PowerPoint
 
-跨尺寸插页先在副本试插，检查目标尺寸和对象缩放。需要保留原首页时，可从原稿副本保留该页并导入新版内页；不要覆盖原稿或退出用户其他演示文稿。
+Test inserting slides across different dimensions in a copy first, then check the target dimensions and object scaling. If the original first slide must be retained, you may keep it in a copy of the source deck and import the redesigned inner slides. Preserve the original file and leave the user's other presentations open.
 
-浏览器与PowerPoint的中文字体、标点和文字框计算可能不同。出现中文标点行首、孤立句号或自动折行时，先检查东亚字体和语言；在支持的PowerPoint COM环境中，LanguageID=2052及FarEastLineBreakControl是可验证的修复选项，仅用于相关中文文字，不全局覆盖其他语言。局部扩框或调整间距后重新渲染受影响页。
+Browsers and PowerPoint may calculate Chinese fonts, punctuation, and text boxes differently. If Chinese punctuation appears at the beginning of a line, a full stop is stranded, or line wrapping is incorrect, check the East Asian font and language settings first. In a PowerPoint COM environment that supports them, LanguageID=2052 and FarEastLineBreakControl are repair options that must be verified. Apply them only to the relevant Chinese text, without globally overriding other languages. Re-render affected slides after local text-box expansion or spacing adjustments.
 
-TextRange的实际文字边界可辅助检查越界和相交；还应目视检查表格、层级、图片主体与遮罩。程序边界检查不能代替视觉判断，装饰叠加也不一定是错误。
+The actual text bounds of TextRange can help detect overflow and intersections. Also visually inspect tables, hierarchy, image subjects, and masks. Programmatic bounds checks do not replace visual judgment, and decorative overlaps are not necessarily errors.
 
-## 交付前检查
+## Pre-delivery checks
 
-- 回读最终PPTX的内容，而非只比对生成代码或HTML。
-- 用目标演示软件渲染最终版本；替代渲染器需说明其验证边界。
-- 检查页数/顺序、缺字/裁切、图片清晰度、字重、中文断行、表格行列与图表关系。
-- 按制作路线执行文件结构校验，确认打开与导出没有修复警告。
-- 修复具体问题后重验受影响范围；全部通过后交付，不为检查而反复重跑。
-- 保存最终渲染、来源对应和已知限制；本地HTTP预览不是长期托管链接。
+- Read content back from the final PPTX, rather than comparing only generation code or HTML.
+- Render the final version with the target presentation software. If using an alternative renderer, state the limits of what it verifies.
+- Check slide count and order, missing or cropped text, image clarity, font weight, Chinese line breaking, table rows and columns, and chart relationships.
+- Run file-structure validation appropriate to the production route. Confirm that opening and exporting produce no repair warnings.
+- After fixing a specific issue, recheck the affected scope. Deliver once all checks pass; avoid repeated runs that add no verification value.
+- Save the final renders, source mapping, and known limitations. A local HTTP preview is not long-term hosting.

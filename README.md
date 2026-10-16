@@ -1,70 +1,81 @@
-# PPT 风格替换
+# PPT Style Transfer
 
-把已有演示稿按参考 PPT、页面截图或已确认风格重新设计，保留本次要求保留的内容与数字。适合视觉改版、页内重排、代表页样张和整套制作，也支持修改现有成稿。
+Redesign an existing presentation to match a reference deck, slide screenshots, or an approved visual style while preserving the content and numbers required for the task. Use it for visual refreshes, slide layout changes, representative samples, complete deck redesigns, or revisions to an existing deliverable.
 
-公开仓库：[ppt-style-transfer](https://github.com/zylallenarcher-beep/ppt-style-transfer)。
+Public repository: [ppt-style-transfer](https://github.com/zylallenarcher-beep/ppt-style-transfer).
 
-## 能做什么
+## Capabilities
 
-- 提炼参考的配色、字体层级、图片语言、品牌元素和空间节奏。
-- 重排文字、图片、表格与图表，按授权降低页面密度。
-- 建立来源内容到新页的映射，核对数字、单位、限定语和对应关系。
-- 按最终文件检查内容，并在实际渲染后检查缺字、裁切、重叠和换行。
-- 按要求交付 PPTX、PDF 或预览，说明可编辑范围及已知限制。
+- Extract the reference's colors, typography hierarchy, image style, brand elements, and spacing.
+- Rearrange text, images, tables, and charts, reducing slide density within the authorized scope.
+- Map source content to output slides and verify numbers, units, qualifiers, and relationships.
+- Check content in the final files and inspect actual renders for missing text, clipping, overlap, and line wrapping.
+- Deliver the requested PPTX, PDF, or previews, with a clear account of editability and known limitations.
 
-从零写演讲内容、单纯更新数字和业务事实审计不属于默认范围。
+Writing a presentation from scratch, updating numbers alone, and auditing business facts are outside the default scope.
 
-## 结构与页数
+## Structure and slide count
 
-| 模式 | 执行方式 |
-|---|---|
-| 结构、页数完整一致 | 保持章节、页面顺序、每页信息归属与总页数，只优化页内布局。 |
-| 优化结构、降低密度、允许增页 | 获得明确授权后重排和拆页，在已批准边界内自行确定页数，并附原页到新页映射。 |
-| 增页数量待确认 | 先提交总页数、净增页数、拆分理由和内容去向；数量确认后制作相关页面。 |
+| Mode | Approach |
+| --- | --- |
+| Preserve structure and slide count | Keep the sections, slide order, content assigned to each slide, and total slide count. Improve layouts within each slide. |
+| Restructure and add slides with authorization | Rearrange or split slides after explicit authorization, choose a slide count within the approved bounds, and provide a source-to-output slide map. |
+| Propose a slide count for approval | Submit the proposed total, net increase, split rationale, and content destinations before producing slides that depend on the increase. |
 
-“页面太挤”本身不授权增页。样张批准与整套页数批准分别记录；已有授权无需重复确认。
+"The slides are too crowded" alone does not authorize adding slides. Sample approval and approval of the full deck's slide count are recorded separately. Existing authorization carries forward without repeated confirmation.
 
-## 安装
+## Installation
 
-将本仓库根目录完整放到 `~/.codex/skills/ppt-style-transfer`，确保 `SKILL.md` 直接位于该目录，保留 `agents/` 和 `references/`。使用自定义 `CODEX_HOME` 时，安装到其 `skills/ppt-style-transfer` 目录。
+Place the complete repository root at `~/.codex/skills/ppt-style-transfer`, with `SKILL.md` directly inside that folder. Keep `agents/` and `references/` together with it. If you use a custom `CODEX_HOME`, install under its `skills/ppt-style-transfer` directory.
 
-也可以执行：
+Alternatively, clone the repository:
 
 ```sh
 git clone https://github.com/zylallenarcher-beep/ppt-style-transfer.git ~/.codex/skills/ppt-style-transfer
 ```
 
-目标目录已存在时，请先另行保存原版本，避免覆盖。
+If the destination already exists, save the existing version separately before replacing it.
 
-## 环境与依赖
+## Environment and dependencies
 
-这是工作流指令包，未捆绑 PPT 制作软件、导出器、渲染器或图片生成服务。运行环境需要具备读取、制作和检查演示文件的能力；具体工具按任务选择。
+This repository contains workflow instructions. It does not bundle presentation software, exporters, renderers, or image generation services. The host environment must provide the ability to read, author, and inspect presentation files; tools are selected for the task.
 
-`pptx`、`baoyu-design`、`imagegen` 是可选集成名称，仓库不包含这些 Skill。名称不同或未安装时，可使用同等能力的工具。HTML 制作和图片生成仅在所选路线需要时使用；Windows PowerPoint COM 仅适用于相应环境。
+`pptx`, `baoyu-design`, and `imagegen` are optional integration names; these Skills are not included in this repository. Equivalent tools may be used when those integrations are unavailable or named differently. HTML authoring and image generation are used only when the chosen production route needs them. Windows PowerPoint COM requires a compatible environment.
 
-可编辑程度取决于制作路线：数据驱动图表和可增删行表格需要相应原生对象支持；合成背景或整页图片中的元素不能声明为全部可编辑。缺少实际渲染条件时，须明确列出未验证部分，不声明已通过渲染检查。
+Editability depends on the production route. Data-driven charts and tables with editable rows require suitable native objects. Elements inside composited backgrounds or full-slide images cannot be described as fully editable. If actual rendering is unavailable, identify the unverified parts and leave rendering validation marked as incomplete.
 
-## 使用示例
+## Usage examples
 
-提供原稿与参考文件后，按需要说明范围：
+Provide the source presentation and visual references, then specify the scope you need.
 
-```text
-使用 $ppt-style-transfer，把原稿改成参考 PPT 的风格。文字和数字保持原样，
-结构、顺序和总页数不变。文字、表格与图表需要可编辑，交付 PPTX 和 PDF。
-```
+### Preserve every slide
 
 ```text
-使用 $ppt-style-transfer，按参考风格改版整套 PPT。允许重排和拆页，页数你定，
-保留全部业务内容，附原页到新页映射，并检查最终渲染。
+Use $ppt-style-transfer to redesign the source deck in the reference style.
+Preserve the wording, numbers, structure, slide order, and total slide count.
+Keep text, tables, and charts editable. Deliver PPTX and PDF files.
 ```
+
+### Allow restructuring and additional slides
 
 ```text
-使用 $ppt-style-transfer，先分析原稿的密集页面，提交建议总页数、净增页数、
-拆分页面与理由、内容去向。先报数量，确认后再制作依赖增页的页面。
+Use $ppt-style-transfer to redesign the complete deck in the reference style.
+You may rearrange and split slides, and choose the slide count.
+Preserve all business content, provide a source-to-output slide map,
+and inspect the final renders.
 ```
 
-完整规则见 [SKILL.md](SKILL.md)、[内容映射与核对](references/content-fidelity.md) 和 [导出与实际渲染](references/export-validation.md)。
+### Approve the slide count first
 
-## 授权说明
+```text
+Use $ppt-style-transfer to analyze crowded slides and propose a new total,
+the net increase, which slides to split and why, and where their content will go.
+Report the proposed count first. Wait for approval before producing slides
+that depend on the increase.
+```
 
-当前包未指定许可证；公开可访问不代表已授予特定开源许可。
+Read the full workflow in [SKILL.md](SKILL.md), [Content Mapping and Fidelity Checks](references/content-fidelity.md), and [Export and Rendering Validation](references/export-validation.md).
+
+## License
+
+No license has been specified for this package. Public availability does not grant a particular open-source license.

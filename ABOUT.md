@@ -1,24 +1,25 @@
 # ppt-style-transfer
 
-## 包来源与状态
+## Package source and status
 
-- 类型：用户已安装 Skill 的完整收录包，包含 `SKILL.md`、`agents/openai.yaml` 和两个 `references/` 文档。
-- 来源：用户提供并授权收录、公开发布的 `ppt-style-transfer` 包；公开仓库为 [ppt-style-transfer](https://github.com/zylallenarcher-beep/ppt-style-transfer)。
-- 本包记录完整工作流，不依据目录快照推断实际调用、成稿制作、测试通过或发布使用情况。
-- 未捆绑第三方代码、字体、图片或其他素材；当前包未指定许可证。
+- Type: A complete package of a user-installed Skill, including `SKILL.md`, `agents/openai.yaml`, and two documents under `references/`.
+- Source: The user supplied the `ppt-style-transfer` package and authorized its inclusion and public distribution at [ppt-style-transfer](https://github.com/zylallenarcher-beep/ppt-style-transfer).
+- Language: The public edition is in English. It preserves the original workflow's scope, authorization rules, and validation requirements.
+- This package documents the workflow. Its presence in a catalog does not establish actual invocation, presentation production, successful testing, or production use.
+- No third-party code, fonts, images, or other assets are bundled. No license has been specified.
 
-## 范围与触发
+## Scope and trigger
 
-用于已有 PPT 按参考演示稿、页面截图或已确认风格进行视觉改版、重排、样张制作和成稿核验。支持固定结构与页数、明确授权后重排增页、先提增页数量方案三种模式。
+Use this Skill to redesign, rearrange, sample, and validate an existing presentation against a reference deck, slide screenshots, or an approved visual style. It supports three modes: preserve structure and slide count, restructure and add slides with explicit authorization, or propose a slide count for approval first.
 
-保真范围、可编辑程度、输出类型和结构权限以当次要求为准。单纯数字更新、从零写稿和业务事实审计不属于默认范围。
+The current request determines content fidelity, editability, output formats, and permission to change structure. Updating numbers alone, writing from scratch, and auditing business facts are outside the default scope.
 
-## 能力与边界
+## Capabilities and limits
 
-提取视觉规则、建立来源内容映射、核对数字上下文、检查最终文件内容，并通过实际渲染检查缺字、裁切、重叠与换行。整页图片和合成背景中的元素不能声明为全部可编辑；没有实际渲染条件时需说明未验证部分。
+Extract visual rules, map source content to output locations, verify numbers in context, check the final file's content, and inspect actual renders for missing text, clipping, overlap, and line wrapping. Elements within full-slide images or composited backgrounds cannot be described as fully editable. Report any parts that could not be verified through actual rendering.
 
-## 依赖与安装
+## Dependencies and installation
 
-依赖宿主环境提供演示文件读取、制作、导出和渲染能力。本包不自带运行时或服务。`pptx`、`baoyu-design`、`imagegen` 是按路线选用的集成名称，未随本包分发，可由同等能力工具替代；HTML、图片生成与 Windows PowerPoint COM 均按实际需要使用。
+The host environment supplies presentation reading, authoring, export, and rendering capabilities. This package includes no runtime or service. `pptx`, `baoyu-design`, and `imagegen` are optional integration names selected for the production route; they are not distributed with this package and may be replaced by equivalent tools. HTML authoring, image generation, and Windows PowerPoint COM are used only when needed and available.
 
-将完整目录安装为 `~/.codex/skills/ppt-style-transfer`；自定义 `CODEX_HOME` 时使用其 `skills/ppt-style-transfer`。用法见 [README.md](README.md)，执行规则见 [SKILL.md](SKILL.md)。
+Install the complete directory at `~/.codex/skills/ppt-style-transfer`, or under `skills/ppt-style-transfer` in a custom `CODEX_HOME`. See [README.md](README.md) for usage and [SKILL.md](SKILL.md) for the execution rules.
