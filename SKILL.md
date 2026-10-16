@@ -1,6 +1,6 @@
 ---
 name: ppt-style-transfer
-description: "Redesign an existing presentation using a reference PPT, slide screenshots, or an approved visual style while preserving source content and numbers. Use for faithful restyling, reflow, and redesign samples; not for updating numbers alone or writing a deck from scratch."
+description: "Redesign an existing presentation from a reference deck, slide screenshots, or an approved visual style while preserving content and numbers. Coordinate available authoring, design, image, and validation skills as needed. Use for restyling and sample redesigns; not for numeric updates alone or writing from scratch."
 ---
 
 # PPT Style Transfer
@@ -48,7 +48,7 @@ Use currently available image-generation capabilities only when new imagery is n
 
 ## Production route
 
-Use the presentation-authoring capabilities actually available in the environment. If `pptx` is available, read the guidance required by its format-handling workflow. Read `baoyu-design` only when choosing HTML-based visual production, and `imagegen` when bitmap generation is needed. Do not load every production skill for every task. If skills with these names are unavailable, use existing tools with equivalent capabilities and continue any work that remains possible.
+Discover the relevant skills and tools actually available in the current environment, then compose only those needed for the current stage. Before selecting or combining authoring, design, image, data, or review capabilities, read [Supporting Skill Orchestration](references/skill-orchestration.md). It maps optional helpers such as `pptx`, `baoyu-design`, and `imagegen` to their tasks and explains compatible routes and handoffs. Read each selected skill's current instructions; names alone do not establish availability. Use equivalent available capabilities when appropriate, and state any remaining gap.
 
 Choose native objects or composited backgrounds according to the editing requirements. If the user requires data-driven charts, tables with rows that can be added or removed, or every element to be editable, choose a route that supports those capabilities. Do not describe a full-slide screenshot or composited background as fully editable. For HTML export, inserting slides across different dimensions, or Windows PowerPoint, read [Export and Actual Rendering](references/export-validation.md).
 

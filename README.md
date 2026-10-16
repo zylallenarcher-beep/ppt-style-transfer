@@ -11,6 +11,7 @@ Public repository: [ppt-style-transfer](https://github.com/zylallenarcher-beep/p
 - Map source content to output slides and verify numbers, units, qualifiers, and relationships.
 - Check content in the final files and inspect actual renders for missing text, clipping, overlap, and line wrapping.
 - Deliver the requested PPTX, PDF, or previews, with a clear account of editability and known limitations.
+- Coordinate available presentation, design, image, spreadsheet, and review skills as the task requires.
 
 Writing a presentation from scratch, updating numbers alone, and auditing business facts are outside the default scope.
 
@@ -40,7 +41,9 @@ If the destination already exists, save the existing version separately before r
 
 This repository contains workflow instructions. It does not bundle presentation software, exporters, renderers, or image generation services. The host environment must provide the ability to read, author, and inspect presentation files; tools are selected for the task.
 
-`pptx`, `baoyu-design`, and `imagegen` are optional integration names; these Skills are not included in this repository. Equivalent tools may be used when those integrations are unavailable or named differently. HTML authoring and image generation are used only when the chosen production route needs them. Windows PowerPoint COM requires a compatible environment.
+Supporting skills are selected from the host's current capabilities. Examples include `pptx`, `presentations`, or `pptx-author` for a compatible authoring route; `baoyu-design` for HTML design; `imagegen` or an explicitly chosen `gpt-image` route for imagery; and `pdf`, `spreadsheets`, or requested specialist review for the relevant checks. These Skills are not bundled with this repository. See [Supporting Skill Orchestration](references/skill-orchestration.md) for the task map, prompting helpers, image-based deck option, and handoff rules.
+
+Only the needed skills are loaded. Existing content, slide-count, editability, tool/model, and authorization requirements carry through each stage. Optional integrations do not automatically install tools, start paid generation, or upload private source material. HTML authoring and image generation are used only when needed; Windows PowerPoint COM requires a compatible environment.
 
 Editability depends on the production route. Data-driven charts and tables with editable rows require suitable native objects. Elements inside composited backgrounds or full-slide images cannot be described as fully editable. If actual rendering is unavailable, identify the unverified parts and leave rendering validation marked as incomplete.
 
@@ -75,6 +78,15 @@ that depend on the increase.
 ```
 
 Read the full workflow in [SKILL.md](SKILL.md), [Content Mapping and Fidelity Checks](references/content-fidelity.md), and [Export and Rendering Validation](references/export-validation.md).
+
+### Combine available skills
+
+```text
+Use $ppt-style-transfer to redesign this deck in the reference style.
+Choose compatible available skills for source inspection, layout, imagery,
+data checks, and final validation. Preserve the content, slide-count,
+editability, and tool requirements already agreed for this task.
+```
 
 ## License
 

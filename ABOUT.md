@@ -2,7 +2,7 @@
 
 ## Package source and status
 
-- Type: A complete package of a user-installed Skill, including `SKILL.md`, `agents/openai.yaml`, and two documents under `references/`.
+- Type: A complete package of a user-installed Skill, including `SKILL.md`, `agents/openai.yaml`, and three documents under `references/`.
 - Source: The user supplied the `ppt-style-transfer` package and authorized its inclusion and public distribution at [ppt-style-transfer](https://github.com/zylallenarcher-beep/ppt-style-transfer).
 - Language: The public edition is in English. It preserves the original workflow's scope, authorization rules, and validation requirements.
 - This package documents the workflow. Its presence in a catalog does not establish actual invocation, presentation production, successful testing, or production use.
@@ -20,6 +20,6 @@ Extract visual rules, map source content to output locations, verify numbers in 
 
 ## Dependencies and installation
 
-The host environment supplies presentation reading, authoring, export, and rendering capabilities. This package includes no runtime or service. `pptx`, `baoyu-design`, and `imagegen` are optional integration names selected for the production route; they are not distributed with this package and may be replaced by equivalent tools. HTML authoring, image generation, and Windows PowerPoint COM are used only when needed and available.
+The host environment supplies presentation reading, authoring, export, and rendering capabilities. This package includes no runtime or service. It coordinates optional available skills for authoring, HTML design, imagery and prompting, spreadsheet source data, PDF review, and requested deck QC. Choose compatible tools for each stage using [Supporting Skill Orchestration](references/skill-orchestration.md); the named skills are not bundled or assumed to be installed. HTML authoring, image generation, and Windows PowerPoint COM are used only when needed and available. The existing source, editing, authorization, and project-data boundaries remain authoritative across handoffs.
 
 Install the complete directory at `~/.codex/skills/ppt-style-transfer`, or under `skills/ppt-style-transfer` in a custom `CODEX_HOME`. See [README.md](README.md) for usage and [SKILL.md](SKILL.md) for the execution rules.

@@ -1,4 +1,4 @@
 interface:
   display_name: "PPT Style Transfer"
-  short_description: "Restyle existing slides with content fidelity and final checks"
-  default_prompt: "Use $ppt-style-transfer to redesign my existing presentation in the reference style, preserve its content and numbers, and produce sample slides or the full deck as requested."
+  short_description: "Restyle decks with design, image and validation skills"
+  default_prompt: "Use $ppt-style-transfer to redesign my existing presentation in the reference style, combine relevant available skills, preserve its content and numbers, and deliver the requested samples or full deck."
