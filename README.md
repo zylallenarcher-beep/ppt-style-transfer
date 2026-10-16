@@ -90,4 +90,6 @@ editability, and tool requirements already agreed for this task.
 
 ## License
 
-No license has been specified for this package. Public availability does not grant a particular open-source license.
+This project is licensed under the [MIT License](LICENSE).
+
+The license covers the files distributed in this repository. Supporting skills and external tools referenced here retain their own licenses and service terms.

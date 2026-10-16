@@ -6,7 +6,7 @@
 - Source: The user supplied the `ppt-style-transfer` package and authorized its inclusion and public distribution at [ppt-style-transfer](https://github.com/zylallenarcher-beep/ppt-style-transfer).
 - Language: The public edition is in English. It preserves the original workflow's scope, authorization rules, and validation requirements.
 - This package documents the workflow. Its presence in a catalog does not establish actual invocation, presentation production, successful testing, or production use.
-- No third-party code, fonts, images, or other assets are bundled. No license has been specified.
+- No third-party code, fonts, images, or other assets are bundled. This package is licensed under the [MIT License](LICENSE).
 
 ## Scope and trigger
 
