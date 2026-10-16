@@ -1,0 +1,4 @@
+interface:
+  display_name: "PPT 风格替换"
+  short_description: "按参考风格重设计已有PPT，保留原文数字，支持样张、拆页与成稿核验"
+  default_prompt: "使用 $ppt-style-transfer，按我提供的参考风格重设计已有PPT，保留内容与数字，并按本次要求制作样张或整套。"
